@@ -1,4 +1,6 @@
 rootProject.name = 'microservice-parent'
 // rootProject.name = "order-service" --> Order-service setting.kts code
+// rootProject.name = "inventory-service" --> Inventory-service Settings.kts code
 
-include("product-service", "order-service")
+
+include("product-service", "order-service", "inventory-service")
