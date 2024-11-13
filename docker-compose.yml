@@ -56,6 +56,22 @@ services:
     networks:
       - spring
 
+  # Order Service Configuration
+  order-service:
+    image: order-service
+    ports:
+      - "8082:8082"
+    build:
+      context: ./order-service
+      dockerfile: ./Dockerfile
+    container_name: order-service
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    depends_on:
+      - postgres
+    networks:
+      - spring
+
 volumes:
   mongo-db:
     driver: local
