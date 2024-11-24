@@ -38,10 +38,12 @@ dependencies {
     implementation("org.flywaydb:flyway-core")
     implementation("org.flywaydb:flyway-database-postgresql")
     // week 10 implementations
-    implementation ("org.springframework.cloud:spring-cloud-starter-openfeign")
+    // implementation ("org.springframework.cloud:spring-cloud-starter-openfeign") ----> Hop off
     implementation("org.springframework.cloud:spring-cloud-contract-stub-runner")
     // implementation("org.springframework.cloud:spring-cloud-starter-openfeign:4.1.3") -----> with versions
     // implementation("org.springframework.cloud:spring-cloud-contract-stub-runner:4.1.4")
+    implementation ("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0")
+    testImplementation ("org.springdoc:springdoc-openapi-starter-webmvc-api:2.6.0")
     compileOnly("org.projectlombok:lombok")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     runtimeOnly("org.postgresql:postgresql")

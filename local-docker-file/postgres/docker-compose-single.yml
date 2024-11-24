@@ -5,16 +5,17 @@ services:
   postgres:
     image: postgres
     ports:
-      - "5433:5432" # default is 5432:5432
-    container_name: postgres-single
+      - "5433:5433" # default is 5432:5432
+    container_name: postgres-order
     environment:
+      #- PGPORT=5433
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=password
     volumes:
       - ./data/order:/var/lib/postgresql/data
       - ./init/order/init.sql:/docker-entrypoint-initdb.d/init.sql
 
-  pqadmin:
+  pgadmin:
     image: dpage/pgadmin4
     ports:
       - "8888:80"
