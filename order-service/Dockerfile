@@ -24,12 +24,12 @@ COPY --from=builder /home/gradle/src/build/libs/*.jar /app/order-service.jar
 # Set PostgreSQL environment variables
 ENV POSTGRES_USER=admin \
     POSTGRES_PASSWORD=password \
-    POSTGRES_DB=orderservicedatabase
+    POSTGRES_DB=order-service
 
 #ENV MONGO_DB_USERNAME=admin \
 #    MONGO_DB_PWD=password
 
 EXPOSE 8086
 
-ENTRYPOINT ["java", "-jar", "order-service.jar" ]
+ENTRYPOINT ["java", "-jar", "/app/order-service.jar" ]
 

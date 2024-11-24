@@ -26,4 +26,4 @@ ENV MONGO_DB_USERNAME=admin \
 
 EXPOSE 8084
 
-ENTRYPOINT ["java", "-jar", "product-service.jar" ]
+ENTRYPOINT ["java", "-jar", "/app/product-service.jar" ]

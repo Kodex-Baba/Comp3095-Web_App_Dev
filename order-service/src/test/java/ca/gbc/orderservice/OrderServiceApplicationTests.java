@@ -1,5 +1,6 @@
 package ca.gbc.orderservice;
 
+import ca.gbc.orderservice.stub.InventoryClientStub;
 import org.junit.jupiter.api.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
 import io.restassured.RestAssured;
@@ -41,11 +42,13 @@ class OrderServiceApplicationTests {
         // Request body for placing an order
         String requestBody = """
                 {
-                    "skuCode": "sku0001",
+                    "skuCode": "sku001",
                     "price": 100.00,
                     "quantity": 5
                 }
                 """;
+
+        InventoryClientStub.stubInventoryCall("sku0001", 10);
 
         var responseBodyString =  RestAssured.given()
                 .contentType("application/json")
@@ -57,7 +60,7 @@ class OrderServiceApplicationTests {
                 .statusCode(201)
                 .extract()
                 .body().asString();
-        assertThat(responseBodyString, Matchers.is("Order Placed Sucessfully"));
+        assertThat(responseBodyString, Matchers.is("Order Placed Successfully"));
     }
 
 

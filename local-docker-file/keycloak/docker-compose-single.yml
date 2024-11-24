@@ -25,7 +25,7 @@ services:
     networks:
       - spring
 
-  postgres:
+  postgres-keycloak:
     image: postgres
     ports:
       - "5431:5432" # default is 5432:5432
