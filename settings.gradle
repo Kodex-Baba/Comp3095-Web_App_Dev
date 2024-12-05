@@ -2,6 +2,7 @@ rootProject.name = 'microservice-parent'
 // rootProject.name = "order-service" --> Order-service setting.kts code
 // rootProject.name = "inventory-service" --> Inventory-service Settings.kts code
 // rootProject.name = "api-gateway" ---> api-gateway Settings.kts code
+// rootProject.name = "notification-service" ---> notification-service Settings.kts code
 
 
-include("product-service", "order-service", "inventory-service", "api-gateway")
+include("product-service", "order-service", "inventory-service", "api-gateway","notification-service")
