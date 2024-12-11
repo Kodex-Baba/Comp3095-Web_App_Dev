@@ -55,7 +55,8 @@ public class Routes {
         return route("order_service")
                 .route(RequestPredicates.path("/api/order"), request -> {
                     log.info("Received request for order service {}", request.uri());
-                        return HandlerFunctions.http(orderServiceUrl).handle(request);
+                    return HandlerFunctions.http(orderServiceUrl).handle(request);
+
                 })
                 .filter(CircuitBreakerFilterFunctions
                         .circuitBreaker("orderServiceCircuitBreaker", URI.create("forward:/fallbackRoute")))
@@ -70,7 +71,8 @@ public class Routes {
         return route("inventory_service")
                 .route(RequestPredicates.path("/api/inventory"), request -> {
                     log.info("Received request for inventory service {}", request.uri());
-                        return HandlerFunctions.http(inventoryServiceUrl).handle(request);
+                    return HandlerFunctions.http(inventoryServiceUrl).handle(request);
+
                 })
                 .filter(CircuitBreakerFilterFunctions
                         .circuitBreaker("inventoryServiceCircuitBreaker", URI.create("forward:/fallbackRoute")))
@@ -119,9 +121,9 @@ public class Routes {
 
     @Bean
     public RouterFunction<ServerResponse> fallbackRoute(){
-
+        log.info("Fallback called");
         return route("fallbackRoute")
-                .route(RequestPredicates.all(),
+                .route(RequestPredicates.path("/fallbackRoute"),
                         request ->ServerResponse.status(HttpStatus.SERVICE_UNAVAILABLE)
                                 .body("Service is Temporarily Unavailable, please try again later"))
                 .build();

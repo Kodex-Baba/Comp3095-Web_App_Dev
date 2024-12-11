@@ -29,7 +29,7 @@ ENV POSTGRES_USER=admin \
 #ENV MONGO_DB_USERNAME=admin \
 #    MONGO_DB_PWD=password
 
-EXPOSE 8086
+EXPOSE 8087
 
 ENTRYPOINT ["java", "-jar", "/app/order-service.jar" ]
 

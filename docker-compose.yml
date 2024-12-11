@@ -58,6 +58,23 @@ services:
       - spring
 
 
+  # Notification Service Configuration
+  notification-service:
+    image: notification-service
+    ports:
+      - "8086:8086"
+    build:
+      context: ./notification-service
+      dockerfile: ./Dockerfile
+    container_name: notification-service
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    depends_on:
+      - order-service
+    networks:
+      - spring
+
+
   # Inventory Service Configuration
   inventory-service:
     image: inventory-service

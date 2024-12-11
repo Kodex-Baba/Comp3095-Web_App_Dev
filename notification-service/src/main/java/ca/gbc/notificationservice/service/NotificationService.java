@@ -4,6 +4,7 @@ import ca.gbc.notificationservice.event.OrderPlacedEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.mail.javamail.MimeMessagePreparator;
@@ -42,7 +43,7 @@ public class NotificationService {
             javaMailSender.send(messagePreparator);
             log.info("Order notification successfully sent!!");
 
-        }catch (MatchException e){
+        }catch (MailException e){
             log.error("Exception occurred when sending email");
             throw new RuntimeException("Exception occurred when attempting to send email" ,e);
         }
